@@ -11,49 +11,65 @@
 * {margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
 
 body {
-  background:#f9f9f9;
   color:#222;
+  scroll-behavior:smooth;
 }
 
 /* NAV */
 nav {
   display:flex;
   justify-content:space-between;
-  padding:20px 50px;
-  background:white;
+  align-items:center;
+  padding:15px 50px;
   position:fixed;
   width:100%;
-  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  z-index:100;
+  background:rgba(0,0,0,0.5);
+  backdrop-filter:blur(10px);
 }
 
-nav h2 {
-  background:linear-gradient(45deg,#c0c0c0,#ff8fa3);
-  -webkit-background-clip:text;
-  color:transparent;
+nav img {
+  height:50px;
 }
 
 /* HERO */
 .hero {
   height:100vh;
+  background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover no-repeat;
   display:flex;
   align-items:center;
   justify-content:center;
-  flex-direction:column;
   text-align:center;
+  color:white;
+  position:relative;
+}
+
+.hero::after {
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.6);
+}
+
+.hero-content {
+  position:relative;
+  z-index:1;
+  animation:fadeUp 1.2s ease;
 }
 
 .hero h1 {
-  font-size:50px;
+  font-size:60px;
 }
 
 .hero p {
   margin:15px 0;
-  color:#666;
+  font-size:18px;
 }
 
 .btn {
   padding:12px 30px;
-  background:linear-gradient(45deg,#c0c0c0,#ff8fa3);
+  background:#ff8fa3;
   color:white;
   border:none;
   border-radius:30px;
@@ -62,7 +78,7 @@ nav h2 {
 }
 
 .btn:hover {
-  transform:scale(1.05);
+  transform:scale(1.1);
 }
 
 /* SECTIONS */
@@ -70,6 +86,12 @@ section {
   padding:80px 50px;
 }
 
+h2 {
+  margin-bottom:30px;
+  text-align:center;
+}
+
+/* SERVICES */
 .services {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -77,9 +99,10 @@ section {
 }
 
 .card {
-  background:white;
+  background:#f4f4f4;
   padding:30px;
-  border-radius:15px;
+  border-radius:10px;
+  text-align:center;
   transition:0.3s;
 }
 
@@ -104,18 +127,28 @@ section {
   transform:scale(1.05);
 }
 
+/* ABOUT */
+.about {
+  max-width:800px;
+  margin:auto;
+  text-align:center;
+  line-height:1.6;
+}
+
 /* CONTACT */
 .contact {
   text-align:center;
+  background:#111;
+  color:white;
 }
 
 .contact a {
   display:block;
   margin:10px 0;
-  color:#555;
+  color:#ccc;
 }
 
-/* ANIMATION */
+/* ANIMATIONS */
 .fade {
   opacity:0;
   transform:translateY(40px);
@@ -126,39 +159,56 @@ section {
   opacity:1;
   transform:translateY(0);
 }
+
+@keyframes fadeUp {
+  from {opacity:0; transform:translateY(30px);}
+  to {opacity:1; transform:translateY(0);}
+}
 </style>
 </head>
 
 <body>
 
 <nav>
-  <h2>ZIS Fitouts</h2>
+  <img src="logo.png" alt="ZIS Logo">
 </nav>
 
 <div class="hero">
-  <h1>ZIS Fitouts</h1>
-  <p>Interior Fitout • Fabrication • Renovation • Landscaping</p>
-  <a href="https://wa.me/971565336465">
-    <button class="btn">Contact on WhatsApp</button>
-  </a>
+  <div class="hero-content">
+    <h1>ZIS Fitouts</h1>
+    <p>Premium Interior Fitouts • Fabrication • Renovation • Landscaping</p>
+    <a href="https://wa.me/971565336465">
+      <button class="btn">Get a Quote</button>
+    </a>
+  </div>
 </div>
 
 <section>
   <h2>Our Services</h2>
   <div class="services fade">
-    <div class="card">Interior Fitouts</div>
-    <div class="card">Metal Fabrication</div>
-    <div class="card">Renovation Works</div>
-    <div class="card">Landscaping Works</div>
+    <div class="card">Complete Interior Fitouts</div>
+    <div class="card">Custom Metal Fabrication</div>
+    <div class="card">Villa & Apartment Renovations</div>
+    <div class="card">Outdoor & Landscaping Works</div>
   </div>
 </section>
 
 <section>
   <h2>Our Projects</h2>
   <div class="projects fade">
-    <img src="https://via.placeholder.com/400x300">
-    <img src="https://via.placeholder.com/400x300">
-    <img src="https://via.placeholder.com/400x300">
+    <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea">
+    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c">
+    <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1">
+  </div>
+</section>
+
+<section>
+  <h2>About Us</h2>
+  <div class="about fade">
+    <p>
+      At ZIS Fitouts, we specialize in delivering high-quality interior fit-out and renovation solutions across residential and commercial projects. 
+      Our focus is on precision, premium finishes, and client satisfaction, ensuring every project is delivered on time and to the highest standards.
+    </p>
   </div>
 </section>
 
@@ -180,6 +230,8 @@ window.addEventListener('scroll', () => {
     }
   });
 });
+
+window.dispatchEvent(new Event('scroll'));
 </script>
 
 </body>
