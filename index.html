@@ -3,171 +3,140 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZIS Fitouts</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+<title>ZIS Interior Fit-Out</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <style>
-* {margin:0;padding:0;box-sizing:border-box;font-family:Poppins;}
+/* Reset & Global */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Montserrat', sans-serif; line-height:1.6; color:#333; background:#fdfdfd; scroll-behavior: smooth; }
+a { text-decoration: none; color: inherit; }
 
-body {
-  background:#fff;
-  color:#111;
-}
+/* Header */
+header { position: fixed; top:0; width:100%; background: rgba(255,255,255,0.95); box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 1000; }
+.nav-container { max-width:1200px; margin:auto; display:flex; justify-content: space-between; align-items:center; padding: 1rem 2rem; }
+.nav-container img { height:50px; }
+nav a { margin-left: 2rem; font-weight:700; transition: color 0.3s; }
+nav a:hover { color:#0077cc; }
 
-/* NAV */
-nav {
-  position:fixed;
-  width:100%;
-  padding:20px 60px;
-  display:flex;
-  justify-content:space-between;
-  z-index:100;
-}
+/* Hero */
+.hero { display:flex; flex-direction: column; justify-content:center; align-items:center; height:100vh; text-align:center; background: url('hero-bg.jpg') center/cover no-repeat; position: relative; }
+.hero h1 { font-size:3rem; margin-bottom:1rem; opacity:0; transform: translateY(20px); animation:fadeUp 1s forwards 0.5s; }
+.hero p { font-size:1.2rem; margin-bottom:2rem; opacity:0; transform: translateY(20px); animation:fadeUp 1s forwards 1s; }
+.hero a { padding: 0.8rem 2rem; background:#0077cc; color:#fff; border-radius:5px; font-weight:700; transition: 0.3s; opacity:0; transform: translateY(20px); animation:fadeUp 1s forwards 1.5s; }
+.hero a:hover { background:#005fa3; }
 
-nav img {
-  height:40px;
-}
+/* Fade Up Animation */
+@keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
 
-/* HERO */
-.hero {
-  height:100vh;
-  background:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c') center/cover no-repeat;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  text-align:center;
-}
+/* Sections */
+section { padding:100px 20px; max-width:1200px; margin:auto; }
+h2 { text-align:center; margin-bottom:50px; font-size:2.5rem; color:#222; }
 
-.hero h1 {
-  font-size:60px;
-  font-weight:600;
-}
+/* Services */
+.services { display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:2rem; }
+.service-card { background:#fff; padding:2rem; border-radius:10px; box-shadow:0 5px 15px rgba(0,0,0,0.1); text-align:center; transition: transform 0.3s; }
+.service-card:hover { transform: translateY(-10px); }
+.service-card h3 { margin-bottom:1rem; }
 
-.hero p {
-  margin-top:10px;
-  font-weight:300;
-}
+/* Projects / Portfolio */
+.projects { display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:2rem; }
+.project-card { overflow:hidden; border-radius:10px; position:relative; cursor:pointer; transition: transform 0.3s; }
+.project-card img { width:100%; display:block; transition: transform 0.5s; }
+.project-card:hover img { transform: scale(1.1); }
+.project-card .overlay { position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.4); opacity:0; transition:opacity 0.3s; display:flex; justify-content:center; align-items:center; color:#fff; font-size:1.2rem; font-weight:700; }
+.project-card:hover .overlay { opacity:1; }
 
-/* SECTIONS */
-.section {
-  padding:120px 80px;
-}
+/* Contact */
+.contact-form { display:flex; flex-direction: column; max-width:500px; margin:auto; }
+.contact-form input, .contact-form textarea { padding:1rem; margin-bottom:1rem; border-radius:5px; border:1px solid #ccc; width:100%; }
+.contact-form button { padding:1rem; background:#0077cc; color:#fff; border:none; border-radius:5px; font-weight:700; cursor:pointer; transition:0.3s; }
+.contact-form button:hover { background:#005fa3; }
 
-/* SPLIT IMAGE SECTION */
-.split {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-}
+/* Footer */
+footer { text-align:center; padding:2rem; background:#222; color:#fff; }
 
-.split img {
-  width:100%;
-  height:500px;
-  object-fit:cover;
-}
-
-.text {
-  padding:40px;
-}
-
-.text h2 {
-  margin-bottom:15px;
-  font-weight:500;
-}
-
-/* FULL IMAGE */
-.full-img {
-  height:80vh;
-  background:url('https://images.unsplash.com/photo-1600210492493-0946911123ea') center/cover no-repeat;
-}
-
-/* CONTACT */
-.contact {
-  text-align:center;
-  padding:100px 20px;
-}
-
-.contact a {
-  display:block;
-  margin:10px;
-  color:#333;
-}
-
-/* ANIMATION */
-.fade {
-  opacity:0;
-  transform:translateY(50px);
-  transition:1s;
-}
-
-.fade.show {
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* MOBILE */
-@media(max-width:768px){
-  .split {
-    grid-template-columns:1fr;
-  }
-}
+/* Responsive */
+@media(max-width:768px){ .nav-container { flex-direction: column; } nav a { margin:1rem 0; } }
 </style>
 </head>
-
 <body>
 
-<nav>
-  <img src="logo.png">
-</nav>
-
-<div class="hero">
-  <div>
-    <h1>ZIS Fitouts</h1>
-    <p>Interior Fitouts • Fabrication • Renovation • Landscaping</p>
-  </div>
+<header>
+<div class="nav-container">
+    <img src="logo.png" alt="ZIS Logo">
+    <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
 </div>
+</header>
 
-<section class="section split fade">
-  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c">
-  <div class="text">
-    <h2>Interior Fitouts</h2>
-    <p>We transform residential and commercial spaces with precision, modern design, and premium finishes.</p>
-  </div>
+<section class="hero">
+    <h1>ZIS Interior Fit-Out</h1>
+    <p>High-quality interior solutions for residential, commercial & hospitality projects.</p>
+    <a href="#contact">Get in Touch</a>
 </section>
 
-<div class="full-img"></div>
-
-<section class="section split fade">
-  <div class="text">
-    <h2>Renovation & Fabrication</h2>
-    <p>From complete renovations to custom metal works, we deliver durable and high-quality results.</p>
-  </div>
-  <img src="https://images.unsplash.com/photo-1600585152915-d208bec867a1">
+<section id="about">
+<h2>About Us</h2>
+<p>ZIS Interior Fit-Out specializes in complete interior fit-out works, gypsum partitions, false ceilings, carpentry, flooring, wall finishes, and more. We ensure timely execution with attention to detail.</p>
 </section>
 
-<section class="contact fade">
-  <h2>Contact</h2>
-  <a href="tel:+971565336465">+971 56 533 6465</a>
-  <a href="mailto:hello@zis.ae">hello@zis.ae</a>
-  <a href="https://instagram.com/zisfitouts.ae">@zisfitouts.ae</a>
+<section id="services">
+<h2>Our Services</h2>
+<div class="services">
+    <div class="service-card">
+        <h3>Interior Fit-Out</h3>
+        <p>Complete end-to-end interior solutions.</p>
+    </div>
+    <div class="service-card">
+        <h3>Gypsum & Ceilings</h3>
+        <p>Partitions, false ceilings, and decorative designs.</p>
+    </div>
+    <div class="service-card">
+        <h3>Carpentry & Joinery</h3>
+        <p>Custom-made furniture & carpentry solutions.</p>
+    </div>
+    <div class="service-card">
+        <h3>Flooring & Finishes</h3>
+        <p>High-quality flooring and wall finishes.</p>
+    </div>
+</div>
 </section>
 
-<script>
-const faders = document.querySelectorAll('.fade');
+<section id="projects">
+<h2>Our Projects</h2>
+<div class="projects">
+    <div class="project-card">
+        <img src="project1.jpg" alt="Project 1">
+        <div class="overlay">Residential Fit-Out</div>
+    </div>
+    <div class="project-card">
+        <img src="project2.jpg" alt="Project 2">
+        <div class="overlay">Commercial Interior</div>
+    </div>
+    <div class="project-card">
+        <img src="project3.jpg" alt="Project 3">
+        <div class="overlay">Hospitality Design</div>
+    </div>
+</div>
+</section>
 
-window.addEventListener('scroll', () => {
-  faders.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100){
-      el.classList.add('show');
-    }
-  });
-});
+<section id="contact">
+<h2>Contact Us</h2>
+<form class="contact-form">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send Message</button>
+</form>
+</section>
 
-window.dispatchEvent(new Event('scroll'));
-</script>
+<footer>
+<p>©️ 2026 ZIS Interior Fit-Out. Email: info@zis.com | Phone: +971-55-XXXXXXX</p>
+</footer>
 
 </body>
 </html>
